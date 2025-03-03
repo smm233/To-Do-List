@@ -12,12 +12,24 @@ function addTask() {
         li.appendChild(span);
     }
     inputBox.value = "";
+    saveTasks();
 }
 
 taskContainer.addEventListener("click", function(e){
     if(e.target.tagName === "LI") {
         e.target.classList.toggle("checked");
+        saveTasks();
     } else if(e.target.tagName === "SPAN"){
         e.target.parentElement.remove();
+        saveTasks();
     }
 }, false);
+
+function saveTasks(){
+    localStorage.setItem("tasks", taskContainer.innerHTML);
+}
+
+function showTasks(){
+    taskContainer.innerHTML = localStorage.getItem("tasks");
+}
+showTasks();
