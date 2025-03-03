@@ -8,4 +8,5 @@ function addTask() {
         li.innerHTML = inputBox.value;
         taskContainer.appendChild(li);
     }
+    inputBox.value = "";
 }
